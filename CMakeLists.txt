@@ -44,6 +44,12 @@ endif()
 
 configure_file(${CMAKE_CURRENT_SOURCE_DIR}/jconfig.h.in ${CMAKE_CURRENT_SOURCE_DIR}/jconfig.h)
 
+if(BUILD_SHARED_LIBS)
+    add_definitions(-DJPEG_LIBRARY)
+else(BUILD_SHARED_LIBS)
+    add_definitions(-DJPEG_LIBRARY_STATIC)
+endif(BUILD_SHARED_LIBS)
+    
 add_library(libjpeg
     jaricom.c
     jcapimin.c
